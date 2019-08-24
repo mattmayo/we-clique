@@ -1,1 +1,1 @@
-# we-clique-bot
+# we-clique
