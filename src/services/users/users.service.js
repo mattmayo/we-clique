@@ -1,20 +1,19 @@
 // Initializes the `users` service on path `/users`
-const createService = require('feathers-memory');
-const hooks = require('./users.hooks');
+const hooks = require("./users.hooks");
+const { Users } = require("./users.class");
 
-module.exports = function (app) {
-  
-  const paginate = app.get('paginate');
+module.exports = function(app) {
+  const paginate = app.get("paginate");
 
   const options = {
     paginate
   };
 
   // Initialize our service with any options it requires
-  app.use('/users', createService(options));
+  app.use("/users", new Users(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('users');
+  const service = app.service("users");
 
   service.hooks(hooks);
 };
