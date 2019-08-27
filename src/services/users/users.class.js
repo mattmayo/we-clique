@@ -4,7 +4,7 @@ const errors = require("@feathersjs/errors");
 exports.Users = class Users extends Service {
   create(data, params) {
     const email = data.email.toLowerCase();
-    const password = data.password;
+    const { name, password } = data;
 
     return this.find({
       query: { email }
@@ -16,6 +16,7 @@ exports.Users = class Users extends Service {
 
       const userData = {
         email,
+        name,
         password
       };
 
