@@ -6,7 +6,9 @@ const mongoose = require("mongoose");
 
 module.exports = function(app) {
   mongoose.Promise = global.Promise;
-  mongoose.connect("mongodb://localhost:27017/weclique");
+  mongoose.connect("mongodb://localhost:27017/weclique", {
+    useNewUrlParser: true
+  });
 
   const paginate = app.get("paginate");
 
